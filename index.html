@@ -27,14 +27,23 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Authentication</a></li>
-          <li><a href="#">My Movies</a></li>
-          <li><a href="#">Search</a></li>
+          <li><a id="authenticate">Authentication</a></li>
+          <li><a id="mine">My Movies</a></li>
+          <li><a id="navSearch">Search</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
 
+  <div class="hide" id="authScreen">
+    <h1>Sign In</h1>
+  </div>
+  <div class="hide" id="myMovies">
+    <h1>My Movies</h1>
+  </div>
+  <div id="search">
+    <h1>Search Movies</h1>
+  </div>
 
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
