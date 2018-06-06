@@ -97,7 +97,7 @@ const deleteMovieFromFirebase = () => {
   });
 };
 
-const updateMovieEent = () => {
+const updateMovieEvent = () => {
   $(document).on('click', '.updateMovieToWatched', (e) => {
     const movieToUpdateId = $(e.target).closest('.movie').data('firebaseId');
     const movieToUpdateCard = $(e.target).closest('.movie');
@@ -178,7 +178,7 @@ const initializer = () => {
   pressEnter();
   saveMovieToWishlistEvent();
   deleteMovieFromFirebase();
-  updateMovieEent();
+  updateMovieEvent();
   filterEvents();
   authEvents();
 };
