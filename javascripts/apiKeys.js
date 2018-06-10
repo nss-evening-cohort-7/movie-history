@@ -4,7 +4,8 @@ const {checkLoginStatus,} = require('./auth');
 
 const apiKeys = () => {
   return new Promise((resolve, reject) => {
-    $.ajax('./db/apiKeys.json')
+    $
+      .ajax('./db/apiKeys.json')
       .done((data) => {
         resolve(data.apiKeys);
       })
@@ -15,16 +16,22 @@ const apiKeys = () => {
 };
 
 const retrieveKeys = () => {
-  apiKeys()
-    .then((results) => {
-      tmdb.setKey(results.tmdb.apiKey);
-      firebaseApi.setConfig(results.firebase);
-      firebase.initializeApp(results.firebase);
-      checkLoginStatus();
-    })
-    .catch((err) => {
-      console.error('no keys:', err);
-    });
+  apiKeys().then((results) => {
+    tmdb.setKey(results.tmdb.apiKey);
+    firebaseApi.setConfig(results.firebase);
+    firebase.initializeApp(results.firebase);
+    firebase
+      .auth()
+      .signInWithEmailAndPassword('lauren.l.rouse@gmail.com', 'Password123')
+      .catch((error) => {
+        $('#signin-error-msg').text(error.message);
+        $('#signin-error').removeClass('hide');
+        console.error(error.message);
+      });
+    checkLoginStatus();
+  }).catch((err) => {
+    console.error('no keys:', err);
+  });
 };
 
 module.exports = {
